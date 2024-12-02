@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addUser, updateUser, deleteUser } from '../store/slices/usersSlice';
 import { FormElements } from './Common/FormElements';
@@ -13,7 +13,8 @@ function UserManagement() {
     name: '',
     email: '',
     roleId: '',
-    status: 'active'
+    status: 'active',
+    password: ''
   });
   const [errors, setErrors] = useState({});
 
@@ -34,6 +35,12 @@ function UserManagement() {
       newErrors.roleId = 'Role is required';
     }
 
+    if (!user.password?.trim()) {
+      newErrors.password = 'Password is required';
+    } else if (user.password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
+    }
+
     return newErrors;
   };
 
@@ -43,7 +50,7 @@ function UserManagement() {
 
     if (Object.keys(formErrors).length === 0) {
       dispatch(addUser(newUser));
-      setNewUser({ name: '', email: '', roleId: '', status: 'active' });
+      setNewUser({ name: '', email: '', roleId: '', status: 'active', password: '' });
       setErrors({});
     } else {
       setErrors(formErrors);
@@ -97,6 +104,15 @@ function UserManagement() {
               }))}
               placeholder="Select Role"
               error={errors.roleId}
+            />
+          </div>
+          <div>
+            <FormElements
+              type="password"
+              placeholder="Password"
+              value={editingUser.password || ''}
+              onChange={(e) => setEditingUser({ ...editingUser, password: e.target.value })}
+              error={errors.password}
             />
           </div>
           <div className="flex justify-end space-x-2">
@@ -154,10 +170,18 @@ function UserManagement() {
             placeholder="Select Role"
             error={errors.roleId}
           />
+          <FormElements
+            elementType="input"
+            type="password"
+            placeholder="Password"
+            value={newUser.password}
+            onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+            error={errors.password}
+          />
         </div>
         <button
           type="submit"
-          className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-green-600"
+          className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
         >
           Add User
         </button>

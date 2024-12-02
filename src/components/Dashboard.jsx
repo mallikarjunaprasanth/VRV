@@ -17,7 +17,7 @@ function Dashboard() {
       icon: '👥'
     },
     {
-      title: 'Role Management',
+      title: 'Permissions',
       description: 'Configure roles and permissions',
       link: '/roles',
       permission: 'all',
