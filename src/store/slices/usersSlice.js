@@ -1,39 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { loginUsers } from '../../assets/JsonFIles/JSON';
 
 const initialState = {
-  users: [
-    { 
-      id: 1, 
-      name: 'Prasanth', 
-      email: 'admin@example.com', 
-      password: 'admin123', 
-      roleId: 1, 
-      status: 'active',
-      role: 'Admin',
-      permission:["all"]
-    },
-    { 
-      id: 2, 
-      name: 'Rajesh', 
-      email: 'editor@example.com', 
-      password: 'editor123',
-      roleId: 2, 
-      status: 'active',
-      role: 'Editor',
-      permission:["editor"]
-    },
-    { 
-      id: 3, 
-      name: 'Babu', 
-      email: 'viewer@example.com', 
-      password: 'viewer123',
-      roleId: 3, 
-      status: 'active',
-      role: 'Viewer' ,
-      permission:["Viewer"]
-
-    },
-  ],
+  users: loginUsers
 };
 
 const usersSlice = createSlice({
@@ -41,7 +10,7 @@ const usersSlice = createSlice({
   initialState,
   reducers: {
     addUser: (state, action) => {
-      state.users.push({ ...action.payload, id: state.users.length + 1 });
+      state.users.push({ ...action.payload, id: state.users.length + 1 , disabled: false});
     },
     updateUser: (state, action) => {
       const index = state.users.findIndex(user => user.id === action.payload.id);
@@ -52,8 +21,15 @@ const usersSlice = createSlice({
     deleteUser: (state, action) => {
       state.users = state.users.filter(user => user.id !== action.payload);
     },
+    updateUserRole: (state, action) => {
+      const { userId, roleId } = action.payload;
+      const user = state.users.find(user => user.id === userId);
+      if (user) {
+        user.roles = [roleId]; // or update roles array as needed
+      }
+    },
   },
 });
 
-export const { addUser, updateUser, deleteUser } = usersSlice.actions;
+export const { addUser, updateUser, deleteUser, updateUserRole } = usersSlice.actions;
 export default usersSlice.reducer;

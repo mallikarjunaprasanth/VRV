@@ -1,12 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { permissions } from '../../assets/JsonFIles/JSON';
 
 const initialState = {
-  permissions: [
-    { id: 1, name: 'read', description: 'Can read content' },
-    { id: 2, name: 'write', description: 'Can create and edit content' },
-    { id: 3, name: 'delete', description: 'Can delete content' },
-    { id: 4, name: 'all', description: 'Has all permissions' },
-  ],
+  permissions: permissions,
 };
 
 const permissionsSlice = createSlice({

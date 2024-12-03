@@ -1,11 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { roles } from '../../assets/JsonFIles/JSON';
 
 const initialState = {
-  roles: [
-    { id: 1, name: 'Admin', permissions: ['all'] },
-    { id: 2, name: 'Editor', permissions: ['read', 'write'] },
-    { id: 3, name: 'Viewer', permissions: ['read'] },
-  ],
+  roles: roles
 };
 
 const rolesSlice = createSlice({
@@ -13,7 +10,14 @@ const rolesSlice = createSlice({
   initialState,
   reducers: {
     addRole: (state, action) => {
-      state.roles.push({ ...action.payload, id: state.roles.length + 1 });
+      const newRole = {
+        id: state.roles.length + 1,
+        name: action.payload.name,
+        permissions: action.payload.permissions || [],
+        roleType: action.payload.name,
+        modules: action.payload.modules 
+      };
+      state.roles.push(newRole);
     },
     updateRole: (state, action) => {
       const index = state.roles.findIndex(role => role.id === action.payload.id);

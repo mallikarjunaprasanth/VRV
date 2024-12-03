@@ -5,18 +5,22 @@ import usersReducer from './slices/usersSlice';
 import rolesReducer from './slices/rolesSlice';
 import permissionsReducer from './slices/permissionsSlice';
 import authReducer from './slices/authSlice';
+import itemsReducer from './slices/itemsSlice';
+import { themeReducer } from './slices/toggleTheme';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth', 'users', 'roles', 'permissions']
+  // whitelist: ['auth', 'users', 'roles', 'permissions']
 };
 
 const rootReducer = combineReducers({
   auth: authReducer,
   users: usersReducer,
   roles: rolesReducer,
-  permissions: permissionsReducer
+  permissions: permissionsReducer,
+  theme: themeReducer,
+  items: itemsReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

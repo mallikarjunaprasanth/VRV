@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../store/slices/authSlice';
+import { login } from '../../store/slices/authSlice';
 import { toast } from 'react-toastify';
 
 function Login() {
@@ -47,11 +47,10 @@ function Login() {
         theme: 'colored'
       });
       navigate('/dashboard');
-    } catch (error) {
+    } catch  {
       toast.error('An error occurred during login', {
         theme: 'colored'
       });
-      console.error('Login error:', error);
     } finally {
       setIsLoading(false);
     }
