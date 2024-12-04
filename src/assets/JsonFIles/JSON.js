@@ -95,9 +95,10 @@ export const items = [{
 ]
 export const permissions = [
     { id: 1, name: 'read', description: 'Can read content' },
-    { id: 2, name: 'write', description: 'Can create and edit content' },
-    { id: 3, name: 'delete', description: 'Can delete content' },
-    { id: 4, name: 'all', description: 'Has all permissions' },
+    { id: 2, name: 'write', description: 'Can create content' },
+    { id: 3, name: 'edit', description: 'Can edit content' },
+    { id: 4, name: 'delete', description: 'Can delete content' },
+    { id: 5, name: 'all', description: 'Has all permissions' },
 ]
 
 export const roles = [
@@ -109,6 +110,6 @@ export const roles = [
         modules: [ 'users', 'roles', 'reports', 'settings', 'products']
     },
 
-    { id: 2, roleType: "Editor", name: 'Editor', permissions: ['read', 'write' ,"delete"], modules: [ 'reports', 'settings', 'products'] },
+    { id: 2, roleType: "Editor", name: 'Editor', permissions: ['read', 'write' ,"delete" ,"edit"], modules: [ 'reports', 'settings', 'products'] },
     { id: 3, roleType: "Viewer", name: 'Viewer', permissions: ['read'], modules: [  'reports', 'settings', 'products'] },
 ]

@@ -97,9 +97,7 @@ const Products = () => {
                     {canEdit ? (
                       <button
                         className={`px-4 py-2 text-sm font-medium rounded-md focus:outline-none focus:ring-2
-                          ${editItem.id === item.id
-                            ? 'bg-yellow-200 text-yellow-800'
-                            : 'bg-yellow-100 text-yellow-700 hover:bg-yellow-200'}`}
+                         bg-yellow-100 text-yellow-700 hover:bg-yellow-200'}`}
                         onClick={() => setEditItem({ id: item.id, value: item.value })}
                       >
                         { 'Edit'}
