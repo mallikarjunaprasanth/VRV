@@ -11,7 +11,7 @@ import { themeReducer } from './slices/toggleTheme';
 const persistConfig = {
   key: 'root',
   storage,
-  // whitelist: ['auth', 'users', 'roles', 'permissions']
+  whitelist: ['auth', 'users', 'roles', 'permissions' , 'theme' , 'items']
 };
 
 const rootReducer = combineReducers({

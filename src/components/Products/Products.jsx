@@ -102,7 +102,7 @@ const Products = () => {
                             : 'bg-yellow-100 text-yellow-700 hover:bg-yellow-200'}`}
                         onClick={() => setEditItem({ id: item.id, value: item.value })}
                       >
-                        {editItem.id === item.id ? 'Currently Editing' : 'Edit'}
+                        { 'Edit'}
                       </button>
                     ):null}
                     {canDelete ? (

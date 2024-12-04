@@ -9,7 +9,6 @@ function AssignPermissionsTab({
     modules,
     isLoading,
     roles,
-    selectedRole,
     openEditModal,
     handleDeleteRole
 }) {
@@ -32,7 +31,7 @@ function AssignPermissionsTab({
                     <div
                         key={role.id}
                         className={`bg-white shadow-sm rounded-lg p-4 hover:shadow-md transition-shadow
-              ${selectedRole?.id === role.id ? 'ring-2 ring-blue-500' : ''}`}
+            `}
                     >
                         <div className="flex justify-between items-center">
                             <div>
@@ -49,12 +48,10 @@ function AssignPermissionsTab({
                             <div className="flex space-x-2">
                                 <button
                                     className={`px-4 py-2 text-sm font-medium rounded-md focus:outline-none focus:ring-2
-                    ${selectedRole?.id === role.id
-                                            ? 'bg-yellow-200 text-yellow-800'
-                                            : 'bg-yellow-100 text-yellow-700 hover:bg-yellow-200'}`}
+                                            bg-yellow-100 text-yellow-700 hover:bg-yellow-200'}`}
                                     onClick={() => openEditModal(role)}
                                 >
-                                    {selectedRole?.id === role.id ? 'Currently Editing' : 'Edit'}
+                                    { 'Edit'}
                                 </button>
                                 <button
                                     className="px-4 py-2 text-sm font-medium text-red-700 bg-red-100 rounded-md hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-red-500"
